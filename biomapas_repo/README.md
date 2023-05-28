@@ -6,15 +6,15 @@ NLP task for assigning proper answer for given customer request
 Project Organization
 ------------
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
+    ├── README.md          <- The top-level README for description of this project.
     ├── data
     │   ├── external       <- Data from user questions and answers session - separate user inputs in separate lines
     │   ├── processed      <- The final data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    ├── models             <- Trained and serialized FAQ prediction models
     │
-    ├── notebooks          <- Jupyter notebooks. 
+    ├── notebooks          <- Jupyter notebooks. None of them are present currently
 
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
@@ -38,13 +38,14 @@ Project description
 For this task dataset BioASQ11 was used. This dataset is representing medical questions and answers and is possible 
 to generate contexts for these questions. However these these question descriptions are not real user context, so in 
 this case we can just make a concept how can it be used if real data of user chat sessions was present. Cookiecutter data science template was used for this project in order to keep all files in right order.
+Cosine similarity method was used to compare tokenized questions and contexts data.
 
 This project consist of 3 parts and each of them are represented by separate python file:<br /><br />
     1. Extracting FAQ's, answers and contexts from raw data file. Main purpose of this part is to extract only useful data to speed up further development process (this part is represented by make_dataset.py file) <br /><br />
     2. Extracting all valuable information from prepared FAQ data and saving this information and adding function for predicting user inputs (cosine similarity method was used to find most relevant FAQ's) and saving all this information in a file. Main purpose of this part is to separate relatively long model building process from usage of this model.  (this part is represented by train_model.py file) <br /><br />
-    3. Loading user inputs from a file, preparing them, finding most relevant FAQ's for user inputs and printing them in command line. Main purpose of this part is to show how potentially FAQ prediction model can be used (this part is represented by predict_model.py file) <br /><br />
+    3. Loading user chat session inputs from a text file, preparing them, finding most relevant FAQ's for user inputs and printing them in command line. Main purpose of this part is to show how potentially FAQ prediction model can be used (this part is represented by predict_model.py file) <br /><br />
 
-All functions in these python files has comments about what functionality they have
+All functions in these python files has docstrings with their functionalty descriptions. For detailed description of this code, you can refer to these docstrings
 
 
 --------

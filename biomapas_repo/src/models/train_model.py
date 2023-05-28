@@ -54,8 +54,10 @@ def preprocess_data(qst, ctx, tokenizer, lemmatizator):
     """
     qst2 = copy.deepcopy(qst)
     ctx2 = copy.deepcopy(ctx)
-    qst_filtered = [re.sub('[^a-zA-Z0-9]+', '', _.lower()) for _ in qst2]
-    ctx_filtered = [re.sub('[^a-zA-Z0-9]+', '', _.lower()) for _ in ctx2]
+    qst2 = [item.lower() for item in qst2]
+    ctx2 = [item.lower() for item in ctx2]
+    qst_filtered = [re.sub('[^a-zA-Z0-9]+', '', item) for item in qst2]
+    ctx_filtered = [re.sub('[^a-zA-Z0-9]+', '', item) for item in ctx2]
     qst_lemmatized = []
     for item in qst_filtered:
         stc = lemmatizator(item)
@@ -132,8 +134,10 @@ class PredictionModel():
         """
         u_questions2 = copy.deepcopy(u_questions)
         u_contexts2 = copy.deepcopy(u_contexts)
-        u_questions_filtered = [re.sub('[^a-zA-Z0-9]+', '', _.lower()) for _ in u_questions2]
-        u_contexts_filtered = [re.sub('[^a-zA-Z0-9]+', '', _.lower()) for _ in u_contexts2]
+        u_questions2 = [item.lower() for item in u_questions2]
+        u_contexts2 = [item.lower() for item in u_contexts2]
+        u_questions_filtered = [re.sub('[^a-zA-Z0-9]+', '', item) for item in u_questions2]
+        u_contexts_filtered = [re.sub('[^a-zA-Z0-9]+', '', item) for item in u_contexts2]
         u_questions_lemmatized = []
         u_contexts_lemmatized = []
         for item in u_questions_filtered:
